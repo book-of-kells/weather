@@ -98,7 +98,7 @@ test("getAndLogWeatherWithAxios calls axios and callAPILogResults", async () => 
   expect(mockAdapter.history.get.length).toBe(1)
   expect(spyLogWeatherData).toBeCalled()
   expect(spyLogWeatherData).toBeCalledWith(
-    fakeData, `handlerFunc | At 98166`, `handlerFunc | /data/2.5/weather\n`
+    fakeData, `handlerFunc | At 98166`, `handlerFunc | data/2.5/weather\n`
     )
 
 })

@@ -115,6 +115,5 @@ if (!module.parent) {
     "Pluto",
     "Seattle",
     "São Paulo",
-    "98166"
   ])
 }
