@@ -26,27 +26,18 @@ const handlerFunc = (config) => {
     resolve([200, {data: fakeData}])
     })
 }
-// `adapter` allows custom handling of requests which makes testing easier.
-// Returns a promise and supply a valid response (see lib/adapters/README.md).
-const axiosAdapter = (config) => {
-  return new Promise(function(resolve, reject) {
-    let response = dispatchRequest(config)
-    let location = config.params.zip || config.params.q
-    logWeatherData(response.data, `axiosAdapter | At ${location}`, `axiosAdapter | failed url: ${config.url}`)
-    settle(resolve, reject, response)
-  })
 
-}
 
 let axiosInstance = axios.create({
   baseURL: "https://api.openweathermap.org",
   url: "data/2.5/weather",
   params: {appid: apiKey},
 })
+
 export const mockAdapter = new MockAdapter(axiosInstance, {onNoMatch: 'passthrough'}).onGet(
   axiosInstance.defaults.url, 
   {params: {zip: "98166", ...axiosInstance.defaults.params}} // make variable from 98166
-  ).reply(handlerFunc)
+).reply(handlerFunc)
 
 export const getDateTimeLogString = (epochSeconds: number): string => {
   const epochMilliseconds = epochSeconds * 1000

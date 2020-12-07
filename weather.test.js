@@ -100,8 +100,11 @@ test("getAndLogWeatherWithAxios calls axios and callAPILogResults", async () => 
   expect(spyLogWeatherData).toBeCalledWith(
     fakeData, `handlerFunc | At 98166`, `handlerFunc | data/2.5/weather\n`
     )
-
 })
+
+// todo test axios catch err
+
+// todo use describe
 
 
 
